@@ -15,4 +15,20 @@ impl StackElement {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn is_else() {
+        let stack_element = StackElement::new( 5, & "\t #else foobar".to_string() );
+        assert!( stack_element.is_else() );
+    }
+
+    #[test]
+    fn is_not_else() {
+        let stack_element = StackElement::new( 5, & "\t #if foobar".to_string() );
+        assert!( ! stack_element.is_else() );
+    }
+}
 
