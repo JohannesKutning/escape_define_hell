@@ -15,11 +15,12 @@ the **-l/--line** argument.
 
 A report containing line number and all  **#ifdef**, **#ifndef**, **#if** and
 **#else** that are required to activate the selected line will be generated.
-E.g. calling **escape_define_hell** with the test file fill return the following
+E.g. calling **escape_define_hell** with the test file returns the following
 report.
 
 
     escape_define_hell -i test/test.c -l 13
+
 
      2: #ifdef def0
      4: #ifdef def1
