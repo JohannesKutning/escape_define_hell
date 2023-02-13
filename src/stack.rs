@@ -33,3 +33,36 @@ impl Stack {
         return string;
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn push() {
+        let mut stack = Stack::new();
+        stack.push( StackElement::new( 1, & "foo".to_string() ) );
+        assert_eq!( stack.to_string(), "1: foo\n" );
+    }
+
+    #[test]
+    fn push_pop() {
+        let mut stack = Stack::new();
+        stack.push( StackElement::new( 1, & "foo".to_string() ) );
+        stack.push( StackElement::new( 2, & "bar".to_string() ) );
+        stack.pop();
+        assert_eq!( stack.to_string(), "1: foo\n" );
+    }
+
+    #[test]
+    fn pop_else() {
+        let mut stack = Stack::new();
+        stack.push( StackElement::new( 1, & "foo".to_string() ) );
+        stack.push( StackElement::new( 2, & "bar".to_string() ) );
+        stack.push( StackElement::new( 3, & "#else".to_string() ) );
+        stack.push( StackElement::new( 4, & "#else".to_string() ) );
+        stack.push( StackElement::new( 5, & "#else".to_string() ) );
+        stack.pop();
+        assert_eq!( stack.to_string(), "1: foo\n" );
+    }
+}
